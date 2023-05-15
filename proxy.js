@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 
 const sendData = async (data) => {
-    const response = await axios.post("https://ortopediagomezdeaguero.es/_functions/updateInventory", data);
+    const response = await axios.post(UPDATE_INVENTORY_URL, data);
     console.log(response.data);
 };
 
