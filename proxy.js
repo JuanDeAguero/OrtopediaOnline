@@ -4,25 +4,21 @@
 // the CORS middleware to allow cross-origin requests, increasing its compatibility
 // with various client-side applications.
 
-const express = require("express");  // Express.js framework for server implementation
-const cors = require("cors");  // Middleware to enable CORS
-const axios = require("axios");  // HTTP client for making requests
-const fs = require("fs");  // File system module for file I/O operations
+const express = require("express");
+const cors = require("cors");
+const axios = require("axios");
+const fs = require("fs");
 
-// Initialize express application
 const app = express();
-app.use(cors());  // Use CORS middleware
+app.use(cors());
 
-// Function to send data to a given API endpoint via a POST request
 const sendData = async (data) => {
     const response = await axios.post(UPDATE_INVENTORY_URL, data);
-    console.log(response.data);  // Log response data for debugging purposes
+    console.log(response.data);
 };
 
-// Define server's listening port. If process.env.PORT is not set, default to port 3000.
 const PORT = process.env.PORT || 3000;
 
-// Start server and log the port it is running on
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 
@@ -36,7 +32,7 @@ app.listen(PORT, () => {
 
             // If the inventory count is greater than 0, add the product to jsonData
             if (parseInt(splitData[i]) > 0) {
-                jsonData[splitData[i]] = splitData[i + 1];  // Key-value pair of productID-quantity
+                jsonData[splitData[i]] = splitData[i + 1];
             }
         }
 
