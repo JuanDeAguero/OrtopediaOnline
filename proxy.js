@@ -24,7 +24,8 @@ app.listen(PORT, () => {
 
     // Read inventory data from a CSV file on the local machine
     fs.readFile("/Users/juan/Desktop/proxy-server/inventario.csv", "utf8", (err, data) => {
-        let splitData = data.split(";");  // Split CSV data by semi-colon
+        // Split CSV data by semi-colon
+        let splitData = data.split(";");
         jsonData = {};
 
         // Iterate over splitData array, step size of 8, starting from the 10th element
