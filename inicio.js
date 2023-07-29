@@ -7,6 +7,6 @@ $w.onReady( () => {
     }
 });
 
-$w("#btnCategorias").onClick( (event) => {
+$w("#btnCategorias").onClick((event) => {
     $w("#menuContainer").open();
 });
