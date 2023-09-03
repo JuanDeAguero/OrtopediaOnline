@@ -20,15 +20,17 @@ const sendData = async (data) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
+
     console.log(`Server running on port ${PORT}`);
 
-    // Read inventory data from a CSV file on the local machine
+    // read inventory data from a CSV file on the local machine
     fs.readFile("/Users/juan/Desktop/proxy-server/inventario.csv", "utf8", (err, data) => {
-        // Split CSV data by semi-colon
+        
+        // split CSV data by semi-colon
         let splitData = data.split(";");
         jsonData = {};
 
-        // Iterate over splitData array, step size of 8, starting from the 10th element
+        // iterate over splitData array, step size of 8, starting from the 10th element
         for (let i = 9; i < splitData.length; i += 8) {
 
             // If the inventory count is greater than 0, add the product to jsonData
@@ -37,7 +39,7 @@ app.listen(PORT, () => {
             }
         }
 
-        // Send jsonData to the UPDATE_INVENTORY_URL via a POST request
+        // send jsonData to the UPDATE_INVENTORY_URL via a POST request
         sendData(jsonData);
     });
 });
