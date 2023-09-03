@@ -22,7 +22,7 @@ export async function post_updateInventory(request) {
                 productId: items[i].productId,
                 incrementBy: difference
             }]);
-        } 
+        }
         // if the difference is negative, decrement the inventory with the absolute value of that difference
         else if (difference < 0) {
             wixStoresBackend.decrementInventory([{

@@ -33,13 +33,13 @@ app.listen(PORT, () => {
         // iterate over splitData array, step size of 8, starting from the 10th element
         for (let i = 9; i < splitData.length; i += 8) {
 
-            // If the inventory count is greater than 0, add the product to jsonData
+            // if the inventory count is greater than 0, add the product to jsonData
             if (parseInt(splitData[i]) > 0) {
                 jsonData[splitData[i]] = splitData[i + 1];
             }
         }
 
-        // send jsonData to the UPDATE_INVENTORY_URL via a POST request
+        // send jsonData to the UPDATE_INVENTORY_URL via POST request
         sendData(jsonData);
     });
 });
