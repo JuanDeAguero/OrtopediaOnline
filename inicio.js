@@ -1,4 +1,4 @@
-import wixWindow from 'wix-window';
+import wixWindow from "wix-window";
 
 $w.onReady( () => {
     if (wixWindow.formFactor === "Mobile") {

@@ -1,4 +1,4 @@
-import { ok } from 'wix-http-functions';
+import { ok } from "wix-http-functions";
 import wixData from "wix-data";
 import wixStoresBackend from "wix-stores-backend";
 
