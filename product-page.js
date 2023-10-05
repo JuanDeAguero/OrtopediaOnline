@@ -2,32 +2,20 @@ import wixData from "wix-data";
 import wixWindow from "wix-window";
 
 $w.onReady(() => {
-    
     $w("#productPage").getProduct()
     .then((product) => {
-
         wixData.query("Stores/InventoryItems")
         .find()
         .then((results) => {
-
             const items = results._items;
-            
-            // loop over each item in the inventory
             for (let i = 0; i < items.length; i++) {
-                
                 let item = items[i];
-                
-                // if the item's product ID matches the current page's product
-                if (items[i].productId == product._id) {
-                    
+                if (items[i].productId == product._id) {    
                     let variants = item.variants;
                     let oneSoldOut = false;
                     let oneAvailable = false;
-                    
-                    // check if any variant is in stock or sold out
                     for (let j = 0; j < variants.length; j++) {
                         let variant = variants[j];
-                        
                         if (variant.inStock) {
                             oneAvailable = true;
                         }
@@ -35,8 +23,6 @@ $w.onReady(() => {
                             oneSoldOut = true;
                         }
                     }
-                    
-                    // if all variants are sold out...
                     if (oneSoldOut && !oneAvailable) {
                         if(wixWindow.formFactor === "Mobile") {
                             $w("#mobileTxtAgotado").show();
@@ -48,8 +34,6 @@ $w.onReady(() => {
                             $w("#txtEnvioExpress").show();
                         }
                     } 
-                    
-                    // if at least one variant is sold out...
                     else if (oneSoldOut) {
                         if(wixWindow.formFactor === "Mobile") {
                             $w("#mobileTxtParcialmente").show();
@@ -62,7 +46,6 @@ $w.onReady(() => {
                             $w("#txtEnvioExpress").show();
                         }
                     }
-
                     return;
                 }
             }
